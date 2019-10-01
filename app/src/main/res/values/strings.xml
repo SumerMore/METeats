@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">METeats</string>
+    <string name="title_activity_startup">Sign in</string>
+    <string name="title_activity_sign">Sign in</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="buttonstr">Sign IN</string>
+    <string name="buttonstr1">Sign UP</string>
+    <string name="logostring">Logo</string>
+    <string name="Hintusername">Username</string>
+    <string name="emailHint">Email-ID</string>
+</resources>

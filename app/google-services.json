@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "264653069049",
+    "firebase_url": "https://meteats-deca3.firebaseio.com",
+    "project_id": "meteats-deca3",
+    "storage_bucket": "meteats-deca3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264653069049:android:547d574ff1997b6ae06028",
+        "android_client_info": {
+          "package_name": "com.example.meteats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "264653069049-ikoe0h533vpmpk0fra522mbd5leur86t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.meteats",
+            "certificate_hash": "ec75334ac7ba9ea94f4c2c17de69039405d58657"
+          }
+        },
+        {
+          "client_id": "264653069049-4a8cpg0vm0hi5mrm1psblkbuemeujqh9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqrcTKxMGVnRuUaxaSNV9Mys6AcWSIZqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "264653069049-4a8cpg0vm0hi5mrm1psblkbuemeujqh9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
