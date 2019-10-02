@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".NewUserActivity"></activity>
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".FoodActivity" />
         <activity
-            android:name=".ui.login.SignActivity"
+            android:name=".ui.login.SignIActivity"
             android:label="@string/title_activity_sign" />
         <activity
             android:name=".yolo"

@@ -10,4 +10,7 @@
     <string name="logostring">Logo</string>
     <string name="Hintusername">Username</string>
     <string name="emailHint">Email-ID</string>
+    <string name="EmailHint">New Email</string>
+    <string name="PasswordHint">Enter New Password</string>
+    <string name="Registertext">Register</string>
 </resources>

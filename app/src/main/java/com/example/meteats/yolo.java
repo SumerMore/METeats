@@ -17,10 +17,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class yolo extends AppCompatActivity {
-        EditText emailId,password;
-        Button signIn, signUp;
-        FirebaseAuth mFirebaseAuth;
-        private FirebaseAuth.AuthStateListener mAuthstateListener;
+    EditText emailId,password;
+    Button signIn, signUp;
+    FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth.AuthStateListener mAuthstateListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,9 +30,25 @@ public class yolo extends AppCompatActivity {
         password =(EditText)findViewById(R.id.passwordtxt);
         signUp =(Button)findViewById(R.id.signUpbtn);
         signIn= (Button)findViewById(R.id.signInbtn);
-        signUp.setOnClickListener(new View.OnClickListener(){
+
+
+        mAuthstateListener =new FirebaseAuth.AuthStateListener() {
+                    @Override
+                    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+           FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
+           if(mFirebaseUser !=null){
+               Toast.makeText(yolo.this," Youu have Logged IN",Toast.LENGTH_SHORT).show();
+               startActivity(new Intent(yolo.this, FoodActivity.class));
+           }
+           else{
+               Toast.makeText(yolo.this,"Please Log IN",Toast.LENGTH_SHORT).show();
+           }
+                    }
+        };
+
+        signIn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 String email =emailId.getText().toString();
                 String pwrd = password.getText().toString();
                 if(email.isEmpty()){
@@ -47,14 +63,14 @@ public class yolo extends AppCompatActivity {
                     Toast.makeText(yolo.this,"Fields Empty ",Toast.LENGTH_SHORT).show();
                 }
                 else if (!(email.isEmpty() && pwrd.isEmpty())){
-                    mFirebaseAuth.createUserWithEmailAndPassword(email,pwrd).addOnCompleteListener(yolo.this, new OnCompleteListener<AuthResult>() {
+                    mFirebaseAuth.signInWithEmailAndPassword(email,pwrd).addOnCompleteListener(yolo.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(!task.isSuccessful()){
-                                Toast.makeText(yolo.this,"SignUp Failed...Try Again Later",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(yolo.this,"Login Error...Try Again Later",Toast.LENGTH_SHORT).show();
                             }
                             else{
-                                startActivity(new Intent(yolo.this,RegisterActivity.class));
+                                startActivity(new Intent(yolo.this,FoodActivity.class));
                             }
                         }
                     });
@@ -62,53 +78,27 @@ public class yolo extends AppCompatActivity {
                 else {
                     Toast.makeText(yolo.this,"Error Occurred",Toast.LENGTH_SHORT).show();
                 }
-                }
+            }
             });
-
-        signIn.setOnClickListener(new View.OnClickListener(){
+        signUp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                String email =emailId.getText().toString();
-                String pwrd = password.getText().toString();
-                if(email.isEmpty()){
-                    emailId.setError("EmailId Not Entered.");
-                    emailId.requestFocus();
-                }
-                else if(pwrd.isEmpty()){
-                    password.setError("Password Not Entered");
-                    emailId.requestFocus();
-                }
-                else if(email.isEmpty() && pwrd.isEmpty()){
-                    Toast.makeText(yolo.this,"Fields Empty ",Toast.LENGTH_SHORT).show();
-                }
-                //{
-                  // mFirebaseAuth.createUserWithEmailAndPassword(email,pwrd).addOnCompleteListener(yolo.this, new OnCompleteListener<AuthResult>() //{
-                       //@Override
-                        //public void onComplete(@NonNull Task<AuthResult> task)// {
-                          // if(!task.isSuccessful()){
-                             //   Toast.makeText(yolo.this,"SignIN Failed...Try Again Later",Toast.LENGTH_SHORT).show();
-                        //    }
-                            else if (!(email.isEmpty() && pwrd.isEmpty())){
-                                mAuthstateListener = new FirebaseAuth.AuthStateListener(){
-                                    @Override
-                                            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
-                                        FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
-                                        if(mFirebaseUser != null){
-                                            Toast.makeText(yolo.this,"Logged IN",Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(yolo.this,FoodActivity.class));
-                                        }
-                            }
-                                };
-                            }
-                        //}
-                    //}//);
-                //}
-               else {
-                    Toast.makeText(yolo.this,"Error Occurred",Toast.LENGTH_SHORT).show();
-               }
+            public void onClick(View v) {
+                startActivity(new Intent(yolo.this, NewUserActivity.class));
             }
         });
-            }
-        }
+
+    }
+
+  //@Override
+    protected void OnStart(){
+       super.onStart();
+       mFirebaseAuth.addAuthStateListener(mAuthstateListener);
+    }
+
+
+
+
+}
+
 
 
