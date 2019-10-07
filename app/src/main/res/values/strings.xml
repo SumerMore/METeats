@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">METeats</string>
+    <string name="title_activity_startup">Sign in</string>
+    <string name="title_activity_sign">Sign in</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="buttonstr">Sign IN</string>
+    <string name="buttonstr1">Sign UP</string>
+    <string name="logostring">Logo</string>
+    <string name="Hintusername">Username</string>
+    <string name="emailHint">Email-ID</string>
+    <string name="EmailHint">New Email</string>
+    <string name="PasswordHint">Enter New Password</string>
+    <string name="Registertext">Register</string>
+    <string name="title_activity_home">Home</string>
+    <string name="openDrawer">Open navigation drawer</string>
+    <string name="closeDrawer">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+</resources>
