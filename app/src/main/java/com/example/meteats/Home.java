@@ -1,5 +1,6 @@
 package com.example.meteats;
 
+import android.content.Intent;
 import android.icu.util.ULocale;
 import android.os.Bundle;
 
@@ -104,7 +105,9 @@ public class Home extends AppCompatActivity
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(Home.this, "" + clickItem.getName(), Toast.LENGTH_SHORT).show();
+                       //Start New Activity
+                        Intent foodDetail =new Intent(Home.this,FoodDetail.class);
+                        startActivity(foodDetail);
                     }
                 });
             }
