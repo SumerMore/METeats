@@ -48,6 +48,8 @@ public class Home extends AppCompatActivity
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
+    FirebaseRecyclerAdapter<category, MenuViewHolder> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,18 +97,23 @@ public class Home extends AppCompatActivity
 
     private void loadMenu() {
 
-        FirebaseRecyclerAdapter<category, MenuViewHolder> adapter = new FirebaseRecyclerAdapter<category, MenuViewHolder>(category.class, R.layout.menu_item, MenuViewHolder.class, category) {
+        adapter =
+                new FirebaseRecyclerAdapter<category, MenuViewHolder>
+                        (category.class, R.layout.menu_item, MenuViewHolder.class, category) {
             @Override
             protected void populateViewHolder(MenuViewHolder viewHolder, category model, int position) {
                 viewHolder.txtMenuName.setText(model.getName());
                 Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.imageView);
 
                 final category clickItem = model;
+
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
                        //Start New Activity
                         Intent foodDetail =new Intent(Home.this,FoodDetail.class);
+
+                        foodDetail.putExtra("FoodId",adapter.getRef(position).getKey());
                         startActivity(foodDetail);
                     }
                 });

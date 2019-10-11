@@ -26,6 +26,7 @@ public class FoodDetail extends AppCompatActivity {
 
     TextView food_name,food_price,food_description;
     ImageView food_image;
+    String foodId="";
     CollapsingToolbarLayout collapsingToolbarLayout;
     FloatingActionButton btnCart;
     ElegantNumberButton numberButton;
@@ -58,19 +59,20 @@ public class FoodDetail extends AppCompatActivity {
         collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.CollapsedAppbar);
 
 
+        if(getIntent()!=null) {
+          foodId=getIntent().getStringExtra("FoodId");
+        }
+        if(!foodId.isEmpty()) {
 
-        getDetailFood();
-
-
-
-
+            getDetailFood(foodId);
+        }
 
     }
 
-    private void getDetailFood() {
+    private void getDetailFood(String foodId) {
 
 
-                foods.addValueEventListener(new ValueEventListener() {
+                foods.child(foodId).addValueEventListener(new ValueEventListener() {
 
             public void onDataChange(DataSnapshot dataSnapshot) {
                category food = dataSnapshot.getValue(category.class);
@@ -81,6 +83,8 @@ public class FoodDetail extends AppCompatActivity {
 
                 food_price.setText(food.getPrice());
                 food_name.setText(food.getName());
+
+                System.out.println(food.getName());
                 //food_description.setText(food.getDescription());
 
             }
