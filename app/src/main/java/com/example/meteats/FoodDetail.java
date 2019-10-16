@@ -3,12 +3,16 @@ package com.example.meteats;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.example.meteats.Database.Database;
+import com.example.meteats.ViewHolder.Order;
 import com.example.meteats.data.model.category;
 import com.example.meteats.ui.data.model.Food;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -22,6 +26,8 @@ import com.squareup.picasso.Picasso;
 
 import java.security.PKCS12Attribute;
 
+import static android.widget.Toast.makeText;
+
 public class FoodDetail extends AppCompatActivity {
 
     TextView food_name,food_price,food_description;
@@ -34,7 +40,6 @@ public class FoodDetail extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference foods;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +49,24 @@ public class FoodDetail extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         foods= database.getReference("Food");
-
+        final Food currentFood = new Food();
         //Init View
         numberButton =(ElegantNumberButton)findViewById(R.id.number_button);
         btnCart = (FloatingActionButton)findViewById(R.id.btnCart);
+
+        btnCart.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+           new Database(getBaseContext()).addtoCart(new Order(
+                foodId,
+                   currentFood.getName(),
+                   numberButton.getNumber(),
+                   currentFood.getPrice()
+
+           ));
+                Toast.makeText(FoodDetail.this,"Added To Cart",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //food_description = (TextView)findViewById(R.id.food_description);
         food_name = (TextView)findViewById(R.id.food_name);

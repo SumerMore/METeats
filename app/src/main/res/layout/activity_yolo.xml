@@ -46,6 +46,7 @@
         style="@style/UserNamestyle"
         android:hint="@string/emailHint"
         android:importantForAutofill="no"
+        android:textColorLink="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,13 +54,14 @@
 
     <EditText
         android:id="@+id/passwordtxt"
+        style="@style/PasswordStyle"
         android:hint="@string/invalid_password"
+        android:importantForAutofill="no"
+        android:textColorLink="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Usernametxt"
-        app:layout_constraintVertical_bias="0.043"
-        style="@style/PasswordStyle"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.043" />
 </androidx.constraintlayout.widget.ConstraintLayout>
